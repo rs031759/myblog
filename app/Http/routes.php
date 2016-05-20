@@ -11,6 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogController@index');
+
+ // routes for the blog
+Route::get('/post/new', array(
+  'as' => 'newPost',
+  'uses' => 'BlogController@newPost'
+));
+
+Route::post('/post/new', array(
+  'as' => 'createPost',
+  'uses' => 'BlogController@createPost'
+));
+
+Route::get('/post/{id}', array(
+  'as' => 'viewPost',
+  'uses' => 'BlogController@viewPost'
+));
+
+Route::post('/post/{id}/comment', array(
+  'as' => 'createComment',
+  'uses' => 'BlogController@createComment'
+));
